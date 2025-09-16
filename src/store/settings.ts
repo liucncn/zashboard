@@ -102,7 +102,7 @@ export const numberOfChartsInSidebar = useStorage<1 | 2 | 3>(
 export const displayProxiesRelationship = useStorage('config/display-proxies-relationship', true)
 
 // proxies
-export const collapseGroupMap = useStorage<Record<string, boolean>>('config/collapse-group-map', {})
+export const collapseGroupMap = useStorage<Record<string, boolean>>('config/collapse-group-map', {"GLOBAL":true})
 export const displayFinalOutbound = useStorage('config/show-seleted-for-now-node', false)
 export const twoColumnProxyGroup = useStorage('config/two-columns', false)
 export const speedtestUrl = useStorage<string>('config/speedtest-url', TEST_URL)
