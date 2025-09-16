@@ -5,8 +5,8 @@ import { v4 as uuid } from 'uuid'
 import { computed } from 'vue'
 import { sourceIPLabelList } from './settings'
 
-export const backendList = useStorage<Backend[]>('setup/api-list', [])
-export const activeUuid = useStorage<string>('setup/active-uuid', '')
+export const backendList = useStorage<Backend[]>('setup/api-list', [{"protocol":"http","host":"127.0.0.1","port":"9090","secondaryPath":"","password":"","label":"","uuid":"922751d3-e21e-4f58-ac7b-dab7f81fc4f0"}])
+export const activeUuid = useStorage<string>('setup/active-uuid', '922751d3-e21e-4f58-ac7b-dab7f81fc4f0')
 export const activeBackend = computed(() =>
   backendList.value.find((backend) => backend.uuid === activeUuid.value),
 )
