@@ -23,7 +23,7 @@ import { useStorage } from '@vueuse/core'
 import { computed } from 'vue'
 
 // global
-export const defaultTheme = useStorage<string>('config/default-theme', 'light')
+export const defaultTheme = useStorage<string>('config/default-theme', 'light-legacy')
 export const darkTheme = useStorage<string>('config/dark-theme', 'dark')
 export const autoTheme = useStorage<boolean>('config/auto-theme', true)
 export const theme = computed(() => {
@@ -88,7 +88,7 @@ export const autoDisconnectIdleUDPTime = useStorage('config/auto-disconnect-idle
 
 // overview
 export const splitOverviewPage = useStorage('config/split-overview-page', false)
-export const showIPAndConnectionInfo = useStorage('config/show-ip-and-connection-info', true)
+export const showIPAndConnectionInfo = useStorage('config/show-ip-and-connection-info', false)
 export const autoIPCheck = useStorage('config/auto-ip-check', true)
 export const autoConnectionCheck = useStorage('config/auto-connection-check', true)
 export const showStatisticsWhenSidebarCollapsed = useStorage(
@@ -97,14 +97,14 @@ export const showStatisticsWhenSidebarCollapsed = useStorage(
 )
 export const numberOfChartsInSidebar = useStorage<1 | 2 | 3>(
   'config/number-of-charts-in-sidebar',
-  2,
+  1,
 )
 export const displayProxiesRelationship = useStorage('config/display-proxies-relationship', true)
 
 // proxies
 export const collapseGroupMap = useStorage<Record<string, boolean>>('config/collapse-group-map', {})
 export const displayFinalOutbound = useStorage('config/show-seleted-for-now-node', false)
-export const twoColumnProxyGroup = useStorage('config/two-columns', true)
+export const twoColumnProxyGroup = useStorage('config/two-columns', false)
 export const speedtestUrl = useStorage<string>('config/speedtest-url', TEST_URL)
 export const independentLatencyTest = useStorage('config/independent-latency-test', false)
 export const speedtestTimeout = useStorage<number>('config/speedtest-timeout', 5000)
@@ -129,7 +129,7 @@ export const minProxyCardWidth = useStorage<number>(
 )
 export const manageHiddenGroup = useStorage('config/manage-hidden-group-mode', false)
 
-export const displayGlobalByMode = useStorage('config/display-global-by-mode', false)
+export const displayGlobalByMode = useStorage('config/display-global-by-mode', true)
 export const customGlobalNode = useStorage('config/custom-global-node-name', GLOBAL)
 
 export const proxyGroupIconSize = useStorage('config/proxy-group-icon-size', 24)
