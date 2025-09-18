@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - 'v*.*.*' # v1.0.0 这样的 tag 会触发
 
 jobs:
   build:
@@ -13,28 +13,37 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 先安装 pnpm
+      # 安装 pnpm（必须在 Node.js 之前）
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10.15.0
+          run_install: false  # 这里不要自动跑 install，后面我们手动执行
 
-      # 再安装 Node.js，cache 用 pnpm
+      # 安装 Node.js，并启用 pnpm 缓存
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'pnpm'
 
+      # 确认 pnpm 可用
+      - name: Check pnpm version
+        run: pnpm --version
+
+      # 安装依赖
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # 构建
       - name: Build project
         run: pnpm build
 
+      # 打包 dist
       - name: Package dist
         run: zip -r dist.zip dist
 
+      # 上传到 GitHub Release
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v1
         with:
